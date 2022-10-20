@@ -57,24 +57,22 @@ Then install the requirements:
 
 `(venv) $ python -m pip install -r requirements.txt`
 
-
 Now you can run pytest!
 
-`cd` to test folder
+`cd` to test folder or keep with assurity_test, you may need try as different environments may have differences
 
 `(venv) $ pytest`
 
-```(venv) PS E:\pythonProject\assurity_api_test\test> pytest
-============================================================================================ test session starts ============================================================================================= 
-platform win32 -- Python 3.10.6, pytest-7.1.3, pluggy-1.0.0
-rootdir: E:\pythonProject\assurity_api_test\test
-plugins: mock-3.10.0
-collected 1 item
+```(venv) PS E:\pythonProject\assurity_test\test> pytest
+(venv) PS D:\assurity_test> pytest
+=========================================================================== test session starts ===========================================================================
+platform win32 -- Python 3.10.4, pytest-7.1.3, pluggy-1.0.0
+rootdir: D:\assurity_test
+collected 2 items                                                                                                                                                          
 
-test_category.py .                                                                                                                                                                                      [100%] 
+test\test_category.py ..                                                                                                                                             [100%] 
 
-============================================================================================= 1 passed in 1.72s ============================================================================================== 
-(venv) PS E:\pythonProject\assurity_api_test\test>
+============================================================================ 2 passed in 0.10s ============================================================================ 
 ```
 If you get failure, it should be caused by environment settings.
 Please refer to the requirement.txt file to manually install. 
