@@ -42,7 +42,7 @@ Windows 10 + python 3.10.8 + pycharm professional(2022.1.1) + pytest
 ## 3.3 Get source code from git
 Clone project from git
 
-   https://github.com/qdtomzhang/assurity_test_api
+   https://github.com/qdtomzhang/assurity_test
   
 ## 3.4  Setup virtual environment
 
