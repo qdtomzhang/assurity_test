@@ -41,7 +41,9 @@ Windows 10 + python 3.10.8 + pycharm professional(2022.1.1) + pytest
 
 ## 3.3 Get source code from git
 Clone project from git
-   1. URL: ......TBD..................
+
+   https://github.com/qdtomzhang/assurity_test_api
+  
 ## 3.4  Setup virtual environment
 
 A note before beginning: As time limit, ideally we can run the test from 4 different environments: cmd, PowerShell, git bash, and PyCharm. 
