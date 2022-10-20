@@ -75,24 +75,6 @@ def promotion_dataclass2dic(dataclass)->dict:
     dic_test_promotions_data = dict(zip(m_promotion_name, m_promotion_description))
     return dic_test_promotions_data
 
-# get all promotion data as dict from URL
-def find_promotion_for() -> dict:
-    resp = requests.get(uRl_test_category)
-    temp = resp.json()
-    return temp['Promotions']
-
-#get all promation data as dataclasses format
-def retrieve_promotion() -> Promotions_data:
-    data = find_promotion_for()
-    return Promotions_data.from_dict_loop(data)
-
-#to make the promotion dict from dataclass
-def retrieve_online_promotion_data() -> dict:
-    data = ()
-    tmp_Promotions_data = Promotions_data.from_dict_loop(data)
-    dic_test_promotions_data = promotion_dataclass2dic(tmp_Promotions_data)
-    return dic_test_promotions_data
-
 #Get the oneline test data
 def retrieve_all_test_data() -> All_Promotions_data:
     data = find_category_for()
