@@ -36,7 +36,7 @@ def local_promotion_json():
         return jsonpath.jsonpath(temp, '$..Promotions')
 
 
-#1. hardcode for gallery postion to [1]
+#1st. hardcode for gallery postion in Promotions[1]
 @responses.activate
 def test_retrieve_Category_using_responses(local_baseline_json):
     responses.add(responses.GET, uRl_test_category, json=local_baseline_json, status=HTTPStatus.OK)
@@ -48,7 +48,6 @@ def test_retrieve_Category_using_responses(local_baseline_json):
 @responses.activate
 def test_retrieve_Promotion_using_responses(local_baseline_json):
     responses.add(responses.GET, uRl_test_category, json=local_baseline_json, status=HTTPStatus.OK)
-
     #online test data
     online_test_data = retrieve_all_test_data()
     # compare with offine test data
