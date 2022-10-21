@@ -32,7 +32,9 @@ Instructions:
 
 # 3. Test implementation
 ## 3.1 Test environment: 
-Windows 10 + python 3.10.8 + pycharm professional(2022.1.1) + pytest
+Suggest to run with: Windows 10(64) + python 3.10.8 + pycharm professional(2022.1.1) + pytest
+
+Tested: Windows 11 + python 3.10.4(64) + pycharm community(2022.1) + pytest are also workable
 ## 3.2 tools installation:
 1. [x] download and install the latest python 3.10.8: https://www.python.org/downloads/
 2. [x] download pycharm(professional or community): https://www.jetbrains.com/pycharm/
@@ -61,7 +63,7 @@ Then install the requirements:
 
 Now you can run pytest!
 
-`cd` to test folder or keep with assurity_test, you may need try as different environments may have differences
+`cd` to "assurity_test", or you may need try `cd` to "test", as different environments may have differences
 
 `(venv) $ pytest`
 
@@ -76,22 +78,10 @@ test\test_category.py ..                                                        
 
 ============================================================================ 2 passed in 0.10s ============================================================================ 
 ```
-If you get failure, it should be caused by environment settings.
+If you are using Pycharm to run, it will detect the missing package automatically and you need to accept the suggestions from Pycharm.
+Make sure you are using the venv that crated before in your IDE
+If you get failure inside IDE, mostly it should be caused by python environment settings.
 Please refer to the requirement.txt file to manually install. 
-If you are using Pycharm, it will detect the missing package automatically and you need to accept the suggestions from Pycharm.
-
-
-**Tips**:
-
-1. if you in Pycharm by right click the file "test_category.py", you may need to keep the code in ‘test_category.py’:
-    
-`with open("test/resources/api_baseline.json") as f:
-`
-2. while when you run in CMD, you may need to change to:
-
-`with open("resources/api_baseline.json") as f:`
-
-or you just **`cd`** to the folder of "assurity_api_test"
 
 
 **Others:**
