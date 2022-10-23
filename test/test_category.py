@@ -56,6 +56,7 @@ def test_retrieve_Promotion_using_responses(local_baseline_json):
     assert online_test_data == All_test_data.ds_test_target(local_baseline_json)
 
 #No.3: using adapter
+# You can choose to use responses to initiate the test, also you can trigger it by test_ only
 @responses.activate
 def test_retrieve_promotion_using_adapter(local_baseline_json):
     responses.add(responses.GET, uRl_test_category, json=local_baseline_json, status=HTTPStatus.OK,passthrough=True)
@@ -66,7 +67,10 @@ def test_retrieve_promotion_using_adapter(local_baseline_json):
     assert online_test_data == All_test_data.ds_test_target(local_baseline_json)
 
 #-No.4: use of vcr.py
-#At Oct.23, the test server just crashed, and I think we should have a way to test offline, then I found vcr.py
+#On Oct.23, the test server was abnormal, so I think we should have a way to test offline, then I found vcr.py
+#You can run the test oneline for the first time, then a ***_vcr file will be created.
+#Then you can run the test without the network, others methods will fail, this one will still success
+#If the online API is changed, you need to delete ***_vcr and re-generate the file again.
 
 @vcr.use_cassette()
 def test_retrieve_test_using_vcr(local_baseline_json):

@@ -33,7 +33,7 @@ class Category_main:
             Name_Promotion=data["Promotions"][1]['Name'],
             Description=data["Promotions"][1]["Description"],
         )
-
+#use requests to get online json file
 def find_category_for() -> dict:
     resp = requests.get(uRl_test_category)
     return resp.json()
@@ -43,42 +43,50 @@ def retrieve_category() -> Category_main:
     return Category_main.from_dict(data)
 
 #2. free where for the gallery postion
-#a. promotion class, to make the promotion dict
-@dataclass
-class Promotions_data:
-    promotion_name: list
-    promotion_description: list
-    @classmethod
-    def from_dict_loop(cls, data: dict) -> "Promotions_data":
-        return cls(
-            promotion_name=jsonpath.jsonpath(data,'$.Promotions...Name'),
-            promotion_description=jsonpath.jsonpath(data,'$.Promotions...Description'),
-        )
-#b. test target data format
+#a. when you want the test to check the format of all the Promotion elements, recommend Promotions_data
+# but if you only want to know the value of "Gallery", All_test_data with "jsonpath" would be easier
+
+# @dataclass
+# class Promotions_data:
+#     promotion_name: list
+#     promotion_description: list
+#     @classmethod
+#     def from_dict_loop(cls, data: dict) -> "Promotions_data":
+#         return cls(
+#             promotion_name=jsonpath.jsonpath(data,'$.Promotions...Name'),
+#             promotion_description=jsonpath.jsonpath(data,'$.Promotions...Description'),
+#         )
+# # Gallery is set as part of test target, if no 'Gallery', test will fail
+# def gallery_desc_fun(data) -> str:
+#     tmp_gallery_desc = Promotions_data.from_dict_loop(data)
+#     dic_test_promotions_data = promotion_dataclass2dic(tmp_gallery_desc)
+#     return dic_test_promotions_data['Gallery']
+#
+# def promotion_dataclass2dic(dataclass)->dict:
+#     temp = asdict(dataclass)
+#     m_promotion_name = temp['promotion_name']
+#     m_promotion_description = temp['promotion_description']
+#     dic_test_promotions_data = dict(zip(m_promotion_name, m_promotion_description))
+#     return dic_test_promotions_data
+
+# #b. test target data format
 @dataclass
 class All_test_data:
     Name: str
     CanRelist: bool
-    gallery_desc: str
+    #gallery_desc: str
+    Promotion_name:str
+    Promotion_Description:str
     @classmethod
     def ds_test_target(cls, data: dict) -> "All_test_data":
         return cls(
             Name=data["Name"],
             CanRelist=data["CanRelist"],
-            gallery_desc=gallery_desc_fun(data),
+            # gallery_desc=gallery_desc_fun(data),
+            Promotion_name = jsonpath.jsonpath(data, "$.Promotions.[?(@.Name == 'Gallery')].Name"),
+            Promotion_Description = jsonpath.jsonpath(data, "$.Promotions.[?(@.Name == 'Gallery')].Description"),
         )
-# Gallery is set as part of test target, if no 'Gallery', test will fail
-def gallery_desc_fun(data) -> str:
-    tmp_gallery_desc = Promotions_data.from_dict_loop(data)
-    dic_test_promotions_data = promotion_dataclass2dic(tmp_gallery_desc)
-    return dic_test_promotions_data['Gallery']
 
-def promotion_dataclass2dic(dataclass)->dict:
-    temp = asdict(dataclass)
-    m_promotion_name = temp['promotion_name']
-    m_promotion_description = temp['promotion_description']
-    dic_test_promotions_data = dict(zip(m_promotion_name, m_promotion_description))
-    return dic_test_promotions_data
 
 #Get the oneline test data
 def retrieve_all_test_data() -> All_test_data:

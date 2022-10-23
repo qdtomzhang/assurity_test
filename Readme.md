@@ -84,6 +84,16 @@ Make sure you are using the venv that crated before in your IDE
 If you get failure inside IDE, mostly it should be caused by python environment settings.
 Please refer to the requirement.txt file to manually install. 
 
+Tips:
+When testing vcr.py, you need to check the test result, a test report will clearly show:
+
+you need to run with 
+
+`(venv) PS D:\assurity_test> pytest --html=report.html`
+
+Then you will get report.html under the folder `assurity_test`
+
+![img_1.png](img_1.png)
 
 **Others:**
 
@@ -102,7 +112,9 @@ maintain easily
  
 
 _I don't know the logical design behind that will influence the test result.
-eg.webpage design for "Gallery" 's tag changes from ["Promotions"][1] to ["Promotions"][2]. 
+eg.
+1.webpage design for "Gallery" 's tag changes from ["Promotions"][1] to ["Promotions"][2]. 
+2.the json format is changed a lot, eg: the "Description" in ["Promotions"][1] is totally deleted
 So, I provide 4 versions: hardcode/responses/adpater/vcr.py
 
 Detailed introduction you and find introduction in files
