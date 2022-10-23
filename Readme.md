@@ -69,14 +69,15 @@ Now you can run pytest!
 
 ```(venv) PS E:\pythonProject\assurity_test\test> pytest
 (venv) PS D:\assurity_test> pytest
-============================= test session starts =============================
-collecting ... collected 3 items
+=========================================================================== test session starts =========================================================================== 
+platform win32 -- Python 3.10.4, pytest-7.1.3, pluggy-1.0.0
+rootdir: D:\assurity_test
+collected 4 items
 
-test/test_category.py::test_retrieve_Category_using_responses 
-test/test_category.py::test_retrieve_Promotion_using_responses 
-test/test_category.py::test_retrieve_promotion_using_adapter 
+test\test_category.py ....                                                                                                                                           [100%] 
 
-============================== 3 passed in 0.73s ==============================
+============================================================================ 4 passed in 1.17s ============================================================================ 
+(venv) PS D:\assurity_test>
 ```
 If you are using Pycharm to run, it will detect the missing package automatically and you need to accept the suggestions from Pycharm.
 Make sure you are using the venv that crated before in your IDE
@@ -102,4 +103,6 @@ maintain easily
 
 _I don't know the logical design behind that will influence the test result.
 eg.webpage design for "Gallery" 's tag changes from ["Promotions"][1] to ["Promotions"][2]. 
-So, I provide 3 versions: hardcode/responses/adpater
+So, I provide 4 versions: hardcode/responses/adpater/vcr.py
+
+Detailed introduction you and find introduction in files

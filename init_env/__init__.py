@@ -7,11 +7,13 @@ Test Target:
 """
 
 import requests
-import json
+#import json
 import jsonpath
 from dataclasses import asdict, dataclass
-import urllib.request
+#import urllib.request
 from typing import Callable
+
+
 bAse_url = "https://api.tmsandbox.co.nz/v1/Categories/6327/Details.json"
 uRl_test_category = bAse_url + "?catalogue=false"
 
@@ -90,12 +92,12 @@ def requests_adapter(url: str) -> dict:
     resp = requests.get(url)
     return resp.json()
 
-#you can chose different adaptar for you request while no changing for other codes
-def urllib_adapter(url: str) -> dict:
-    """An adapter that encapsulates urllib.urlopen"""
-    with urllib.request.urlopen(url) as response:
-        resp = response.read()
-    return json.loads(resp)
+# #you can chose different adaptar for you request while no changing for other codes
+# def urllib_adapter(url: str) -> dict:
+#     """An adapter that encapsulates urllib.urlopen"""
+#     with urllib.request.urlopen(url) as response:
+#         resp = response.read()
+#     return json.loads(resp)
 
 def find_testdata_with_adapter(adapter: Callable[[str], dict]) -> dict:
     """Find the online data using an adapter."""
@@ -107,7 +109,6 @@ def retrieve_testdata_with_adapter(
     """Retrieve online data implementation that uses an adapter."""
     data = find_testdata_with_adapter(adapter=adapter)
     return All_test_data.ds_test_target(data)
-
 
 # --------------
 # for test- mock a joson with error

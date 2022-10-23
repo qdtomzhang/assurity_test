@@ -11,7 +11,7 @@ import pytest
 import responses
 from http import HTTPStatus
 import jsonpath
-
+import vcr
 
 from init_env import (
     Category_main,
@@ -33,12 +33,6 @@ def local_baseline_json():
         return json.load(f)
 
 @pytest.fixture()
-def local_fakeline_json():
-    """Fixture that returns a static baseline."""
-    with open("test/resources/api_baseline_fake.json") as f:
-        return json.load(f)
-
-@pytest.fixture()
 def local_promotion_json():
     """Fixture that returns a static baseline."""
     with open("test/resources/api_baseline.json") as f:
@@ -46,14 +40,14 @@ def local_promotion_json():
         return jsonpath.jsonpath(temp, '$..Promotions')
 
 
-#1st. hardcode for gallery postion in Promotions[1]
+#No.1: hardcode for gallery postion in Promotions[1]
 @responses.activate
 def test_retrieve_Category_using_responses(local_baseline_json):
     responses.add(responses.GET, uRl_test_category, json=local_baseline_json, status=HTTPStatus.OK,passthrough=True,)
     category_info = retrieve_category()
     assert category_info == Category_main.from_dict(local_baseline_json)
 
-#2nd way: No matter where is Gallery, we can this to compare the right Description
+#No.2: No matter where is Gallery, we can this to compare the right Description
 @responses.activate
 def test_retrieve_Promotion_using_responses(local_baseline_json):
     responses.add(responses.GET, uRl_test_category, json=local_baseline_json, status=HTTPStatus.OK,passthrough=True)
@@ -61,14 +55,22 @@ def test_retrieve_Promotion_using_responses(local_baseline_json):
     online_test_data = retrieve_all_test_data()
     assert online_test_data == All_test_data.ds_test_target(local_baseline_json)
 
-#3rd way: using adapter
+#No.3: using adapter
 @responses.activate
 def test_retrieve_promotion_using_adapter(local_baseline_json):
     responses.add(responses.GET, uRl_test_category, json=local_baseline_json, status=HTTPStatus.OK,passthrough=True)
 
     online_test_data = retrieve_testdata_with_adapter(adapter=requests_adapter)
-    #you can change the adaptar to use another way of request webpage
+    #you can change adaptar to use another way to request webpage - e.g.:by urllib
     #online_test_data = retrieve_testdata_with_adapter(adapter=urllib_adapter)
     assert online_test_data == All_test_data.ds_test_target(local_baseline_json)
 
-#4th way: using VCR.py
+#-No.4: use of vcr.py
+#At Oct.23, the test server just crashed, and I think we should have a way to test offline, then I found vcr.py
+
+@vcr.use_cassette()
+def test_retrieve_test_using_vcr(local_baseline_json):
+    category_info = retrieve_category()
+    assert category_info == Category_main.from_dict(local_baseline_json)
+
+

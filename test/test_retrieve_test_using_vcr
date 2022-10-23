@@ -1,0 +1,61 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.1
+    method: GET
+    uri: https://api.tmsandbox.co.nz/v1/Categories/6327/Details.json?catalogue=false
+  response:
+    body:
+      string: '{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance
+        Declaration\u000aI confirm that these carbon credits are certified and registered
+        with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest
+        position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good
+        position in category","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better
+        position in category","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature
+        Combo","Description":"Best position in category \u000aIncludes benefits of
+        Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7,"CanUseCounterOffers":true}'
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - ETag
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1398'
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 23 Oct 2022 14:06:41 GMT
+      ETag:
+      - '"XrQ7a3WGz9ANtbrp0tIirJIhAM8="'
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-ASPNET-VERSION:
+      - ''
+      X-Content-Type-Options:
+      - nosniff
+      X-Correlation-ID:
+      - 6fd89097-7dcb-482a-8d1b-c8ba07d4e04a
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-POWERED-BY:
+      - ''
+      X-Request-ID:
+      - 24da99c9-66fe-4125-a446-ed4d0e7b12aa
+    status:
+      code: 200
+      message: OK
+version: 1
