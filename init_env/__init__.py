@@ -109,16 +109,3 @@ def retrieve_testdata_with_adapter(
     """Retrieve online data implementation that uses an adapter."""
     data = find_testdata_with_adapter(adapter=adapter)
     return All_test_data.ds_test_target(data)
-
-# --------------
-# for test- mock a joson with error
-#---------------
-# def fake_baseline_json():
-#     """Fixture that returns a static baseline."""
-#     with open("test/resources/api_baseline_fake.json") as f:
-#         return json.load(f)
-#
-# def retrive_test_category()-> Category_main:
-#     data = fake_baseline_json()
-#     return Category_main.from_dict(data)
-#---------------
