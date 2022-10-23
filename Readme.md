@@ -89,8 +89,20 @@ When testing vcr.py, you need to check the test result, a test report will clear
 
 you need to run with 
 
-`(venv) PS D:\assurity_test> pytest --html=report.html`
+```
+(venv) PS D:\assurity_test> pytest --html=report.html    
+=========================================================================== test session starts ===========================================================================
+platform win32 -- Python 3.10.4, pytest-7.1.3, pluggy-1.0.0
+rootdir: D:\assurity_test
+plugins: html-3.1.1, metadata-2.0.2
+collected 4 items                                                                                                                                                          
 
+test\test_category.py ....                                                                                                                                           [100%]
+
+-------------------------------------------------------- generated html file: file://D:\assurity_test\report.html --------------------------------------------------------- 
+============================================================================ 4 passed in 0.82s ============================================================================ 
+(venv) PS D:\assurity_test> 
+```
 Then you will get report.html under the folder `assurity_test`
 
 ![img_1.png](img_1.png)

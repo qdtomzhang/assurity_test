@@ -10,7 +10,6 @@ import json
 import pytest
 import responses
 from http import HTTPStatus
-import jsonpath
 import vcr
 
 from init_env import (
@@ -32,12 +31,12 @@ def local_baseline_json():
     with open("test/resources/api_baseline.json") as f:
         return json.load(f)
 
-@pytest.fixture()
-def local_promotion_json():
-    """Fixture that returns a static baseline."""
-    with open("test/resources/api_baseline.json") as f:
-        temp = json.load(f)
-        return jsonpath.jsonpath(temp, '$..Promotions')
+# @pytest.fixture()
+# def local_promotion_json():
+#     """Fixture that returns a static baseline."""
+#     with open("test/resources/api_baseline.json") as f:
+#         temp = json.load(f)
+#         return jsonpath.jsonpath(temp, '$..Promotions')
 
 
 #No.1: hardcode for gallery postion in Promotions[1]
@@ -68,9 +67,9 @@ def test_retrieve_promotion_using_adapter(local_baseline_json):
 
 #-No.4: use of vcr.py
 #On Oct.23, the test server was abnormal, so I think we should have a way to test offline, then I found vcr.py
-#You can run the test oneline for the first time, then a ***_vcr file will be created.
-#Then you can run the test without the network, others methods will fail, this one will still success
-#If the online API is changed, you need to delete ***_vcr and re-generate the file again.
+#You can run the test online for the first time, then a ***_vcr file will be created.
+#Then you can run the test without the network. The others tests will fail, but this one will still success
+#If the online API is changed, you need to delete ***_vcr and re-generate the files again.
 
 @vcr.use_cassette()
 def test_retrieve_test_using_vcr(local_baseline_json):

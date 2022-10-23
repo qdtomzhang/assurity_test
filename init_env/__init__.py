@@ -7,7 +7,6 @@ Test Target:
 """
 
 import requests
-#import json
 import jsonpath
 from dataclasses import asdict, dataclass
 #import urllib.request
