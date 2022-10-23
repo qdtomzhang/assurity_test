@@ -51,7 +51,7 @@ Clone project from git
 A note before beginning: As time limit, ideally we can run the test from 4 different environments: cmd, PowerShell, git bash, and PyCharm. 
 I just tested and strongly recommend PyCharm and cmd. And I also strongly recommend against PowerShell.
 
-Best practice is to maintain virtual environments for different python projects to avoid dependency conflicts. `cd` into the `assurity_api_test` directory and run.
+Best practice is to maintain virtual environments for different python projects to avoid dependency conflicts. `cd` into the `assurity_test` directory and run.
 
 `$ python -m venv venv` 
 
