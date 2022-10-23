@@ -14,6 +14,7 @@ import urllib.request
 from typing import Callable
 bAse_url = "https://api.tmsandbox.co.nz/v1/Categories/6327/Details.json"
 uRl_test_category = bAse_url + "?catalogue=false"
+
 #1. hardcode for gallery postion to [1]
 @dataclass
 
@@ -89,19 +90,19 @@ def requests_adapter(url: str) -> dict:
     resp = requests.get(url)
     return resp.json()
 
-# you can chose different adaptar for you request while no changing for other codes
-# def urllib_adapter(url: str) -> dict:
-#     """An adapter that encapsulates urllib.urlopen"""
-#     with urllib.request.urlopen(url) as response:
-#         resp = response.read()
-#     return json.loads(resp)
+#you can chose different adaptar for you request while no changing for other codes
+def urllib_adapter(url: str) -> dict:
+    """An adapter that encapsulates urllib.urlopen"""
+    with urllib.request.urlopen(url) as response:
+        resp = response.read()
+    return json.loads(resp)
 
 def find_testdata_with_adapter(adapter: Callable[[str], dict]) -> dict:
     """Find the online data using an adapter."""
     return adapter(uRl_test_category)
 
 def retrieve_testdata_with_adapter(
-    adapter: Callable[[str], dict] = requests_adapter
+    adapter: Callable[[str], dict]
 ) -> All_test_data:
     """Retrieve online data implementation that uses an adapter."""
     data = find_testdata_with_adapter(adapter=adapter)
