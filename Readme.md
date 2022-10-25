@@ -105,7 +105,7 @@ test\test_category.py ....                                                      
 ```
 Then you will get report.html under the folder `assurity_test`
 
-![img_1.png](img_1.png)
+![img.png](img.png)
 
 **Others:**
 
