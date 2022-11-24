@@ -79,15 +79,13 @@ test\test_category.py ....                                                      
 ============================================================================ 4 passed in 1.17s ============================================================================ 
 (venv) PS D:\assurity_test>
 ```
-If you are using Pycharm to run, it will detect the missing package automatically and you need to accept the suggestions from Pycharm.
-Make sure you are using the venv that crated before in your IDE
-If you get failure inside IDE, mostly it should be caused by python environment settings.
+If you are using Pycharm, which will detect the missing package automatically and you need to accept the suggestions from Pycharm.
+Make sure you are using the venv that created before in your IDE.
+If you get failure inside IDE, it should be caused by python environment settings.
 Please refer to the requirement.txt file to manually install. 
 
 Tips:
-When testing vcr.py, you need to check the test result, a test report will clearly show:
-
-you need to run with 
+If you want to get a test report,  you need to run with 
 
 ```
 (venv) PS D:\assurity_test> pytest --html=report.html    
@@ -110,23 +108,14 @@ Then you will get report.html under the folder `assurity_test`
 **Others:**
 
 
-`why using .json file as input, not to do hard-code value comparison
+`why using .json file as input:
 `
 
-* Definitely we can do hard-code value comparison for known input, but it will be hard to maintain when input changes 
+* Definitely we can do hard-code value comparison for the known input, but it will be difficult to maintain when input changes 
 * It's better to use the similar framework to test more scenarios, so json file as a baseline setting will help us to 
 maintain easily
 
 
-`uncertainty for acceptance 3:`
-
- The Promotions element with Name = "Gallery" has a Description that contains the text "Good position in category"
- 
-
-_I don't know the logical design behind that will influence the test result.
-eg.
-1.webpage design for "Gallery" 's tag changes from ["Promotions"][1] to ["Promotions"][2]. 
-2.the json format is changed a lot, eg: the "Description" in ["Promotions"][1] is totally deleted
-So, I provide 4 versions: hardcode/responses/adpater/vcr.py
+I provide 4 versions: hardcode/responses/adpater/vcr.py
 
 Detailed introduction you and find introduction in files
